@@ -1,0 +1,1 @@
+// Figma Text Area별 스타일 variant로 정의하기 
