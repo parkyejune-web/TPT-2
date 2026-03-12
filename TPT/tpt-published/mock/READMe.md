@@ -1,0 +1,1 @@
+# 아직 제작되지 않은 API에 대해 mock data와 mock api를 정의하고 호출하는 곳. 

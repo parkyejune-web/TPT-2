@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  color-scheme: light only;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* 다크 모드 비활성화 - 모바일 환경에서 텍스트 가독성 확보 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 입력 요소에만 명시적으로 검은색 적용 (버튼 제외) */
+input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+textarea,
+select {
+  color: #000000;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* 커스텀 애니메이션 */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes diagonal-shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 1.5s ease-in-out infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-diagonal-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-diagonal-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 70%
+  );
+  animation: diagonal-shine 1s ease-in-out;
+  pointer-events: none;
+}
+
+@layer utilities {
+  .animate-gradient {
+    background: linear-gradient(
+      270deg,
+      #BDAA79,
+      #d4c199,
+      #BDAA79,
+      #a89667
+    ) !important;
+    background-size: 400% 400% !important;
+    animation: gradient-shift 3s ease infinite !important;
+  }
+
+  /* 스크롤바 숨기기 (스크롤 기능은 유지) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE, Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+}
+
+/* 리뷰 HTML 콘텐츠 스타일 */
+.review-content {
+  line-height: 1.6;
+}
+
+.review-content p {
+  margin-bottom: 0.5rem;
+}
+
+.review-content p:last-child {
+  margin-bottom: 0;
+}
+
+.review-content strong,
+.review-content b {
+  font-weight: 600;
+}
+
+.review-content em,
+.review-content i {
+  font-style: italic;
+}
+
+.review-content u {
+  text-decoration: underline;
+}
+
+.review-content ul,
+.review-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.review-content ul {
+  list-style-type: disc;
+}
+
+.review-content ol {
+  list-style-type: decimal;
+}
+
+.review-content li {
+  margin-bottom: 0.25rem;
+}
+
+/* Quill 에디터 스타일 커스터마이징 */
+.ql-container {
+  min-height: 150px;
+  font-size: 14px;
+}
+
+.ql-editor {
+  min-height: 150px;
+}
+
+.ql-editor.ql-blank::before {
+  font-style: normal;
+  color: #9ca3af;
+}
