@@ -146,21 +146,11 @@ export default function CustomersPage() {
         {/* 미구독 (무료) 고객 목록 */}
         <FreeCustomersTable />
 
-        {/* 레벨테스트 시도 목록 (상태별) */}
-        <LevelTestAttemptsTable />
-
         {/* 투자 유형 변경 신청 */}
         {/* <InvestmentTypeChangeTable
           changeRequests={changeRequests}
           onProcess={handleProcessChangeRequest}
         /> */}
-
-        {/* 상담 신청 목록 */}
-        <ConsultationsTable
-          consultations={consultations}
-          onToggle={handleConsultationToggle}
-          onShowMemo={handleShowMemo}
-        />
       </main>
 
       {showModal && (

@@ -189,7 +189,7 @@ export default function FreeCustomersTable({ showDeleteButton = false }: Props) 
   return (
     <section className="mb-12">
       <div className="flex items-center gap-3 mb-4">
-        <h2 className="text-2xl font-bold">REGULAR 고객 목록</h2>
+        <h2 className="text-2xl font-bold">비구독 고객 목록</h2>
         <span className="px-3 py-1 text-sm font-semibold bg-gray-100 text-gray-800 rounded-full">
           총 {totalCount}명
         </span>

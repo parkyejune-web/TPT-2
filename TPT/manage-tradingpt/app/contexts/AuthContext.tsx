@@ -20,6 +20,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const isAdmin = user?.role === 'ROLE_ADMIN';
 
   const fetchUserInfo = useCallback(async () => {
+    if (process.env.NODE_ENV === 'development') {
+      setUser({ role: 'ROLE_ADMIN', userId: 0, name: 'dev', email: '', nickname: '', profileImageUrl: '', phoneNumber: '', oneLineIntroduction: '' });
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     try {
       const response = await getAdminMe();
